@@ -11,7 +11,8 @@ function App() {
         return <input type="text" label={props.label}
                       onChange={
                           (input) => {
-                              props.onChange(input.target.value);
+                              props.setter(input.target.value);
+                              // props.onChange(input.target.value);
                           }}
                       value={props.value}>
         </input>
@@ -34,12 +35,14 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo"/>
-                <TextBox label="Source Latitude" onChange={setStartLat} value={startLat} />
-                <TextBox label="Source Longitude" onChange={setStartLon} value={startLon}/>
-                <TextBox label="Dest Latitude" onChange={setEndLat} value={endLat}/>
-                <TextBox label="Dest Longitude" onChange={setEndLon} value={endLon}/>
+                <TextBox label="Source Latitude" value={startLat} setter={setStartLat}/>
+                <TextBox label="Source Longitude" value={startLon} setter={setStartLon}/>
+                <TextBox label="Dest Latitude" value={endLat} setter={setEndLat}/>
+                <TextBox label="Dest Longitude" value={endLon} setter={setEndLon}/>
                 <Button onPress={(event) => {
-                    setStartLat(startLat)
+                    setStartLat(startLat);
+                    setStartLon(startLon);
+
                 }}/>
                 <DisplayDebug d={startLat}/>
                 <DisplayDebug d={startLon}/>
